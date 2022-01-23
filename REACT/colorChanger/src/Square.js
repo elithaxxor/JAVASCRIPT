@@ -1,16 +1,19 @@
 import Input from './Input'
 import './App.css';
 
-const Square = ( {colorValue} ) => {
+const Square = ( { colorValue, hexValue, isDarkText } ) => {
   return (
-    <div className="Square">
-        <p> style={{ backgroundColor:colorValue }} </p> 
-        <p> {colorValue ? colorValue:"Empty Value"} </p>
-    </div>
+    <section 
+    className="Square"
+    style = {{
+    backgroundColor: colorValue, 
+    color: isDarkText ? "#000":"#FFF" }}>  
+    <p> {colorValue ? colorValue:"Empty Value"} </p>
+    <p> {hexValue ? hexValue:null} </p>
+    </section>
   );
-}
-
+    }
 Square.defaultProps={
-  colorValue = 'EmptyColorValue---'
-}
+  colorValue : 'EmptyColorValue---' }
+
 export default Square;
