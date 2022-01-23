@@ -1,0 +1,37 @@
+<title>A Basic HTML5 Template</title>
+<meta name="description" content="A simple HTML5 Template for new projects.">
+<meta name="author" content="SitePoint">
+
+<head>
+<script>  
+
+var id = 0; 
+var timer = 0;
+
+function printMSG(){
+	document.getElementById('groovy').innerHTML=seconds + 'seconds have passed';
+    seconds++; 
+  }
+  
+function start(){
+	id = window.setTimeout(printMSG, 5000);
+	id = window.setInterval(printMSG, 1000);
+
+
+}
+
+function stop(){
+    window.clearTimeout(id);
+    alert('you cleared the timer');
+}
+</script>
+
+</head>
+
+<button onclick='start()' id='btnAdd'> Start</button> 
+<h2 id='groovy'>
+ Something Groovy
+</h2>
+<button onclick='stop()' id='btnStop'>
+ Stop 
+</button>
