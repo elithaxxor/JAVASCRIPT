@@ -12,18 +12,23 @@ const sad_words = ['sad', 'angry','depressed','so-so',];
 const happy_words = ['happy', 'ecstatic','ebullient','maniac',];
 const starterEncouragements = ['cheer up', 'you will get through this'];
 
-
 const db = new Database();
 const client = new Discord.Client(); 
 
 // database logic (set, push, del)
 db.get('encouragements').then(encouragements => // .then => sets encouragements as a variable to parse in to db logic
          { if (!encouragements || encouragements.length < 1){
-                db.set('encouragements', starterEncouragements)
+                db.set('encouragements', starterEncouragements);
 }})
 
-
-
+// database response (verify db exists, if it does not- set it to an existing db)
+db.get('responding').then(response => {
+        console.log('Database is currently set to: ' + response);
+        if(response == null ){ //confirm this is first time program is null, and nothing is in the data base
+                db.set('responding', true);
+                console.log('Database is NOW currently set to: ' + response);
+        } 
+})
 
 function prettify(){
         let multi = 30;
@@ -70,6 +75,14 @@ function getQuote(){
 client.on('ready', () => `logged in as ${client.user.tag}`);
 client.on('message', msg => {
         const date = new Date();
+        db.get('responding').then(responding=>{
+                if (responding && sad_words.some(word => msg.content.includes(word))){ // loop thru array, and return true for matching vals 
+                        db.get('encouragements').then(encouragements => {
+                        const encouragement = encouragements[Math.floor(Math.random()*encouragements.length)];
+                        console.log('client needs to be encouraged'+ date);
+                        msg.reply(encouragement); 
+                        })}
+
         if (msg.author.bot){ // exit function if author is bot 
                 console.log('message from author bot');
                 return
@@ -101,6 +114,18 @@ client.on('message', msg => {
                 msg.channel.send(encouragements);
                 console.log('Client called list'+ date)
                 })
+        }
+        if (msg.content.startsWith('$responding')){
+                resp = msg.content.split(responding)[1];
+                if ( resp.tolowerCase() == 'true'){
+                        console.log('client requested response set True.' + date)
+                        db.set('responding', true);
+                        msg.channel.send('bot response is on')
+                }else{
+                        console.log('client requested response set False.' + date)
+                        db.set('responding', false);
+                        msg.channel.send('bot response is off')
+                }
         }
         };
 })
