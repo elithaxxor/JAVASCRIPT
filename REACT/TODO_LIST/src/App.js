@@ -4,8 +4,7 @@ import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
 import { useState, useEffect } from 'react';
-import apiRequest from './apiRequest'
-
+import apiRequest from './apiRequest';
 
 // npx json-server -p 3500 ./data/db.json
 function App() {
@@ -15,6 +14,30 @@ function App() {
         const [search, setSearch] = useState('');
         const [fetchError, setFetchError] = useState('');
         const [isLoading, setIsLoading] = useState('');
+
+useEffect(()=> {
+    const fetchItems = async() => {
+        try {
+            const response = await fetch(API_URL);
+            console.log(response);
+            if(!response) throw Error('Could not connect');
+            const listItems = await response.json();
+            console.log(listItems);
+            setItems(listItems);
+            setFetchError(null);
+        } // set it to null incase !null before
+
+        catch(err){
+            console.log(err.stack);
+            setFetchError(err.message);
+        }
+        finally {
+            setIsLoading(false);
+        }
+        setTimeout(()=> {
+            (async () => await fetchItems())();
+        }, 2000)}}, [])
+
 
 useEffect(() => {
         localStorage.setItem('shoppinglist', JSON.stringify(items));}, [items])
@@ -42,7 +65,7 @@ const handleCheck = async (id) => {
                 headers: {
                         'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ checked: myItem[0].checked }) 
+                body: JSON.stringify({ checked: myItem.checked })
         }; 
         const reqUrl = `${API_URL}/${id}`;
         const result = await apiRequest(reqUrl, updateOptions);
@@ -52,12 +75,14 @@ const handleCheck = async (id) => {
   const handleDelete = async (id) => {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
-    const updateOptions = {
+      const myItem = listItems.filter(item => item.id === id);
+
+      const updateOptions = {
         method: 'PATCH',
         headers: {
                 'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ checked: myItem[0].checked }) 
+        body: JSON.stringify({ checked: myItem.checked })
 }; 
         const reqUrl = `${API_URL}/${id}`;
         const result = await apiRequest(reqUrl, updateOptions);
@@ -79,30 +104,7 @@ useEffect(()=>
 
 // everytime a page is loaded, use effect will check connection and set items. 
 // use effect to connect to db, check request and display err msg on DOM/CON
-useEffect(()=> {
-  //let date = new Date();
-      const fetchItems = async() => {
-      try {
-                const response = await fetch(API_URL);
-                console.log(response);
-                if(!response) throw Error('Could not connect');
-                const listItems = await response.json();
-                console.log(listItems);
-                setItems(listItems);
-                setFetchError(null);
-        } // set it to null incase !null before 
 
-                catch(err){
-                console.log(err.stack);
-                setFetchError(err.message);
-      } 
-                finally{
-                        setIsLoading(false);
-                
-                setTimeout(()=> { 
-                        (async () => await fetchItems())();
-                }, 2000), []}};}
-    // main 
 
   return (
     <div className="App">
