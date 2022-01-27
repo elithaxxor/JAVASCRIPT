@@ -56,6 +56,8 @@ const postOptions = {
         if (result) setFetchError(result);
 }
 
+
+// creates an array and compares checked vs non checked on the item list
 const handleCheck = async (id) => {
         const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
         setItems(listItems);
@@ -72,6 +74,8 @@ const handleCheck = async (id) => {
         if (result) setFetchError(result); 
         console.log(result);
   }
+
+
   const handleDelete = async (id) => {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
@@ -97,6 +101,8 @@ const handleSubmit = (e) => {
         addItem(newItem);
         setNewItem('');
   }
+
+  //1 is to run on the page, recusivly, the 2nd is to log on load
 useEffect(()=> 
         console.log('useEffect log'));
 useEffect(()=> 
