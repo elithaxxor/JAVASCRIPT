@@ -35,6 +35,37 @@ export default function App() {
 
   // fetch all db upon page load and set login, pass and verification status.
   useEffect(() => {
+    const load_database = async () => {
+      const db_data = await fetchUsers(); //function below, fetches database (for users)
+      console.log("db_data", db_data);
+    };
+    // setTimeout(() => {
+    //   console.log(loginStatus);
+    //   console.log("Employee ", userName);
+    //   console.log("Pass ", password);
+    //   const fechUsers = async () => {
+    //     const resp = await fetch("http://localhost:5000/accounts");
+    //     const loginData = await resp.json(); //.then((loginData) => {
+    //     console.log(loginData);
+    //     setEmployees(loginData.userName);
+    //     setPasswords(loginData.password);
+    //     setVerification(setVerification.status);
+    //     setPending(false);
+    //     console.log(
+    //       `userName ${employees} \n password ${passwords} \n verification ${verification}`
+    //     );
+    //     if (resp && resp.data) {
+    //       // need to reframe this logic somehow
+    //       console.log("[DB]-- \n", resp.status);
+    //     } else {
+    //       console.log("[DB]-- Non 200 from DB: \n", resp.status);
+    //       alert("error in DB", resp.status);
+    //     }
+    //   };
+    // }, 1000);
+  }, []);
+
+  const fetchUsers = async () => {
     setTimeout(() => {
       console.log(loginStatus);
       console.log("Employee ", userName);
@@ -53,21 +84,24 @@ export default function App() {
 
         if (resp && resp.data) {
           // need to reframe this logic somehow
-          console.log("[DB]-- \n", resp.status);
+          console.log("[DB]-- \n", resp.status, "\n", resp.data);
         } else {
-          console.log("[DB]-- Non 200 from DB: \n", resp.status);
+          console.log(
+            "[DB]-- Non 200 from DB: \n",
+            resp.status,
+            "\n",
+            resp.data
+          );
           alert("error in DB", resp.status);
         }
       };
     }, 1000);
-  }, []);
-
+  };
   const onSubmit = () => {
-    console.log("username input", userName);
+    const user_list = console.log("username input", userName);
     console.log("password input", password);
     console.log(loginStatus);
     console.log(employees);
-
     console.log(passwords.includes(passwords));
 
     if (
