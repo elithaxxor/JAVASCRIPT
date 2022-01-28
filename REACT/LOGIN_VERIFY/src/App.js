@@ -86,14 +86,16 @@ export default function App() {
           if (resp && resp.data) {
             // need to reframe this logic somehow
             console.log("[DB]-- \n", resp.status, "\n", resp.data);
-          } else {
+          } else if (!resp.ok) {
             console.log(
               "[DB]-- Non 200 from DB: \n",
               resp.status,
               "\n",
               resp.data
             );
+
             alert("error in DB", resp.status);
+            throw Error("could not parse db");
           }
         };
       }, 1000);
