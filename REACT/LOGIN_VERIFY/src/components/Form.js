@@ -1,3 +1,6 @@
+import { Button, Card } from "react-bootstrap";
+import { Form as form0 } from "react-bootstrap";
+
 const Form = ({
   isPending,
   loginStatus,
@@ -13,34 +16,43 @@ const Form = ({
   var time = new Date();
   return (
     <html>
-      <form>
-        <label>User: </label>
+      <form0>
+        <label for="input username"> </label>
         <input
           type="text"
+          placeholder="username:"
           id="credentials-user"
           name="credentials-user"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
-        <div>
-          {console.log(employees)}
-          <label> Password: </label>
-          <input
-            type="text"
-            id="credentials-pass"
-            name="credentials-pass"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        {console.log("password", password)};
-      </form>
+        {console.log(employees)}
+        <label for="input password"> </label>
+        <input
+          type="text"
+          placeholder="password"
+          id="credentials-pass"
+          name="credentials-pass"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {console.log("password", password)};<br></br>
+        <small id="login_help" class="form-text text-muted">
+          {" "}
+          your credentials are safe here ;)
+        </small>
+      </form0>
 
       <div>
-        <button style={{ background: "purple" }} onClick={onSubmit}>
+        <Button
+          class="btn btn-primary"
+          type="submit"
+          value={setPassword}
+          onClick={onSubmit}
+        >
           {" "}
           Login{" "}
-        </button>
+        </Button>
       </div>
     </html>
   );
