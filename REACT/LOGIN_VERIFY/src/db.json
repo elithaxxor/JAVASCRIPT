@@ -1,0 +1,5 @@
+"accounts": [
+  {"userName":"adel", "password":"test1", "status":false},
+  {"userName":"deep", "password":"test2", "status":false},
+  {"userName":"fuad", "password":"test3", "status":false}
+]
