@@ -66,36 +66,40 @@ export default function App() {
   }, []);
 
   const fetchUsers = async () => {
-    setTimeout(() => {
-      console.log(loginStatus);
-      console.log("Employee ", userName);
-      console.log("Pass ", password);
-      const fechUsers = async () => {
-        const resp = await fetch("http://localhost:5000/accounts");
-        const loginData = await resp.json(); //.then((loginData) => {
-        console.log(loginData);
-        setEmployees(loginData.userName);
-        setPasswords(loginData.password);
-        setVerification(setVerification.status);
-        setPending(false);
-        console.log(
-          `userName ${employees} \n password ${passwords} \n verification ${verification}`
-        );
-
-        if (resp && resp.data) {
-          // need to reframe this logic somehow
-          console.log("[DB]-- \n", resp.status, "\n", resp.data);
-        } else {
+    try {
+      setTimeout(() => {
+        console.log(loginStatus);
+        console.log("Employee ", userName);
+        console.log("Pass ", password);
+        const fechUsers = async () => {
+          const resp = await fetch("http://localhost:5000/accounts");
+          const loginData = await resp.json(); //.then((loginData) => {
+          console.log(loginData);
+          setEmployees(loginData.userName);
+          setPasswords(loginData.password);
+          setVerification(setVerification.status);
+          setPending(false);
           console.log(
-            "[DB]-- Non 200 from DB: \n",
-            resp.status,
-            "\n",
-            resp.data
+            `userName ${employees} \n password ${passwords} \n verification ${verification}`
           );
-          alert("error in DB", resp.status);
-        }
-      };
-    }, 1000);
+
+          if (resp && resp.data) {
+            // need to reframe this logic somehow
+            console.log("[DB]-- \n", resp.status, "\n", resp.data);
+          } else {
+            console.log(
+              "[DB]-- Non 200 from DB: \n",
+              resp.status,
+              "\n",
+              resp.data
+            );
+            alert("error in DB", resp.status);
+          }
+        };
+      }, 1000);
+    } catch (err) {
+      console.log("Error in Fetching DB fetchUsers() \n", err);
+    }
   };
   const onSubmit = () => {
     const user_list = console.log("username input", userName);
