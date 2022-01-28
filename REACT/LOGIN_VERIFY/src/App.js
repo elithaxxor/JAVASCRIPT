@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 
+import { Button, Form, Card } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 //<label for='credentials'> Enter Login Info: </label>
 // npm install -g json-server
 
