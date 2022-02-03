@@ -1,0 +1,4 @@
+one of my first projects using docs and my old material.
+
+Expense Tracker. Changes colors and updates array upon u-i.
+
