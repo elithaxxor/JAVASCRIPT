@@ -1,0 +1,3 @@
+this web app leverages geolocate api, google maps and an arbitrary/free weather fetching api. 
+
+it renders users current location, and updates the weather / ui based on user input.
