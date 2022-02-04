@@ -1,0 +1,47 @@
+[
+  {
+    "id": "61fc964d51b3e546679700fc",
+    "email": "myra_wall@interodeo.brussels",
+    "roles": [
+      "admin"
+    ],
+    "apiKey": "e4aa762a-6aa6-420b-a511-962b9a45adc0",
+    "profile": {
+      "dob": "1991-09-03",
+      "name": "Myra Wall",
+      "about": "Tempor ullamco aliquip tempor amet excepteur reprehenderit sint cillum sint aute proident. Nostrud adipisicing mollit velit laborum quis incididunt.",
+      "address": "60 Seigel Court, Interlochen, Louisiana",
+      "company": "Interodeo",
+      "location": {
+        "lat": 70.241393,
+        "long": -45.555321
+      }
+    },
+    "username": "myra91",
+    "createdAt": "2012-12-11T07:44:26.826Z",
+    "updatedAt": "2012-12-12T07:44:26.826Z"
+  },
+  {
+    "id": "61fc964d253446c3055f1630",
+    "email": "copeland_higgins@zolarity.xbox",
+    "roles": [
+      "member",
+      "admin"
+    ],
+    "apiKey": "759911dd-a9dd-4736-81ea-7a8c091f8437",
+    "profile": {
+      "dob": "1994-04-29",
+      "name": "Copeland Higgins",
+      "about": "Minim tempor aliquip aliquip aliqua nulla dolor excepteur tempor. Labore veniam excepteur pariatur mollit ex deserunt est eu enim ipsum dolor in incididunt.",
+      "address": "30 Baycliff Terrace, Campo, Northern Mariana Islands",
+      "company": "Zolarity",
+      "location": {
+        "lat": 11.509115,
+        "long": 51.579118
+      }
+    },
+    "username": "copeland94",
+    "createdAt": "2010-08-20T20:58:24.692Z",
+    "updatedAt": "2010-08-21T20:58:24.692Z"
+  }
+]
