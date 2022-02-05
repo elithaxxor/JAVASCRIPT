@@ -1,2 +1,12 @@
-create assets dir in public. load corropsonding resources (css, html, fonts, images, etc) --> whatever comes from the source. 
+create dir public --> assets . load <body>  into assets folder.  (css, html, fonts, images, etc) --> whatever comes from the source. 
+
+Then create: 
+home js. inside of -> src -> pages 
+
 create pages folder under SRC. --> and crate Home.js (see repo for template.) 
+copy and paste info from .html into home.js
+clean up the file (remove comments, fix /> tags etc..) 
+
+
+copy <head> (contents include scripts etc.) of original assets and replace ORIGINAL (from npm create) and replace <head>. 
+
