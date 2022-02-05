@@ -6,7 +6,7 @@ const Database = require('@replit/database'); // require is node
 // *javascript review, project scope and guidlines provisioned by freecodecamp.com.  
 // const { token } = require('./config.json');
 // application id: 934867095395663902
-// public key: beceb0c29f327383f06a25f3b805226c30372c90a15a68746004ab48ae160171
+// public key: INSERT KEY HERE
 
 const sad_words = ['sad', 'angry','depressed','so-so',];
 const happy_words = ['happy', 'ecstatic','ebullient','maniac',];
