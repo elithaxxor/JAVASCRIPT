@@ -1,0 +1,2 @@
+create assets dir in public. load corropsonding resources (css, html, fonts, images, etc) --> whatever comes from the source. 
+create pages folder under SRC. --> and crate Home.js (see repo for template.) 
