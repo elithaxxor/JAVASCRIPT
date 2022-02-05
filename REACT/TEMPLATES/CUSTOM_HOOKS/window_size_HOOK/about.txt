@@ -1,0 +1,1 @@
+sets window size state, dynamically updates state w/ useeffect and eventListener. 
