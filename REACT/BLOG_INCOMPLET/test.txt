@@ -1,0 +1,1 @@
+blog thats imcomplete with redux
